@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %} | OGRP</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+            <nav class="px-32 py-6 flex justify-between items-center border-b border-gray-200 fixed right-0 left-0 top-0 bg-gradient-to-r from-cyan-200 to-blue-300 text-gray-700 shadow-lg">
+            <a class="text-2xl" href="/">Online Grievance Redressal Portal</a>
+          
+            <div>
+              <ul class="flex space-x-6">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="p-1 border-b border-gray-200" href="#"><strong>Welcome, {{ user.username }}</strong></a>
+                    </li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <a href="/admin" class="hover:underline">Admin Panel</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="hover:underline" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="hover:underline" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="hover:underline" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "app/layout.html" %}
+
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+    <div class="border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-28 px-5 py-4 rounded-xl shadow-lg">
+        <div class="flex justify-between">
+            <p class="mt-8 text-4xl text-sky-700 leading-relaxed">This platform aims to register your grievance and assist you in its redressal.</p>
+            <img src="{% static 'images/Active Support-rafiki.svg' %}" class="w-96">
+        </div>
+        <div class="w-max flex space-x-6">
+            <button class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Register Grievance</button>
+            <button class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Track Grievance Status</button>
+        </div>
+    </div>
+    <div class="flex border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-12 px-5 py-4 rounded-xl shadow-lg">
+        <div>
+            <p class="text-4xl text-sky-700">About Our Grievance Redressal Portal</p>
+
+            <p class="mt-4 text-xl">Welcome to our online Grievance Redressal Portal, a platform dedicated to ensuring that your concerns and grievances are heard, addressed, and resolved efficiently. We understand the importance of transparent and responsive grievance handling, and our portal is designed to empower users, foster accountability, and drive positive change.</p>
+                
+            <p class="mt-8 mb-4 text-4xl text-sky-700">Our Mission</p>
+                
+            <p class="text-xl">Our mission is to provide a seamless and user-friendly interface that allows individuals to voice their grievances and concerns with confidence. We are committed to upholding the principles of fairness, transparency, and swift resolution. By harnessing the power of technology, we aim to make the grievance redressal process more accessible, efficient, and effective.</p>
+        </div>
+        <img src="{% static 'images/Questions-pana.svg' %}" class="w-96">
+    </div>
+    <footer class="mt-20 px-32 py-6 flex justify-between border-b border-gray-200 static bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
+        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
+    </footer>
+{% endblock %}

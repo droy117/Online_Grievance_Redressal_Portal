@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% if message %}
+        <div class="mt-24 text-red-500 text-center p-1 bg-red-100">{{ message }}</div>
+    {% endif %}
+
+    <div class="w-max my-6 mx-auto p-6 bg-sky-100 rounded-xl mt-24">
+        <h1 class="mb-6 text-3xl">Register</h1>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-max" required type="text" name="username" placeholder="Username"><br>
+            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-max" required type="email" name="email" placeholder="Email Address"><br>
+            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded" required type="password" name="password" placeholder="Password"><br>
+            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded" required type="password" name="confirmation" placeholder="Confirm Password"><br>
+            <input class="py-2 px-8 text-lg bg-sky-500 hover:bg-sky-700 rounded-xl text-white" type="submit" value="Register"><br>
+        </form>
+    </div>
+
+    <div class="text-center">Already have an account? <a href="{% url 'login' %}" class="text-sky-700 hover:underline">Log In here.</a></div>
+
+    <footer class="mt-auto px-32 py-6 flex justify-between border-b border-gray-200 absolute right-0 left-0 bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
+        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
+    </footer>
+{% endblock %}
