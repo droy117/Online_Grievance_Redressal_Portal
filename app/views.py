@@ -38,10 +38,15 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        phone_number = request.POST["phone_number"]
+        address = request.POST["address"]
+        state = request.POST["state"]
+        gender = request.POST["gender"]
 
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+
         if password != confirmation:
             return render(request, "app/register.html", {
                 "message": "Passwords must match."
@@ -49,7 +54,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username=username, password=password, email=email, phone_number=phone_number, address=address, state=state, gender=gender)
             user.save()
         except IntegrityError:
             return render(request, "app/register.html", {
