@@ -11,8 +11,16 @@
             <img src="{% static 'images/Active Support-rafiki.svg' %}" class="w-96">
         </div>
         <div class="w-max flex space-x-6">
-            <button class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Register Grievance</button>
-            <button class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Track Grievance Status</button>
+            <a href="{% if user.is_authenticated %}
+                        {% url 'register_grievance' %}
+                    {% else %}
+                        {% url 'login' %}
+                    {% endif %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Register Grievance</a>
+            <a href="{% if user.is_authenticated %}
+                        {% url 'track_grievance' %}
+                    {% else %}
+                        {% url 'login' %}
+                    {% endif %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Track Grievance Status</a>
         </div>
     </div>
     <div class="flex border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-12 px-5 py-4 rounded-xl shadow-lg">
@@ -27,7 +35,4 @@
         </div>
         <img src="{% static 'images/Questions-pana.svg' %}" class="w-96">
     </div>
-    <footer class="mt-20 px-32 py-6 flex justify-between border-b border-gray-200 static bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
-        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
-    </footer>
 {% endblock %}

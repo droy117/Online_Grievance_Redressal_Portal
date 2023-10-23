@@ -1,0 +1,23 @@
+{% extends 'app/dash_base.html' %}
+
+{% block content %}
+    <form class="p-6 w-full mx-auto flex flex-col border border-sky-300 rounded-xl" action="{% url 'lodge_grievance' %}" method="post">
+        {% csrf_token %}
+        <label class="text-gray-700 text-lg" for="category">Select Grievance Category</label>
+        <select class="mb-6 text-xl p-3 bg-white border border-gray-500 rounded-xl" name="category" id="category">
+            <option value="" disabled selected>Select Grievance Category</option>
+            <option class="text-sky-600" value="Grievances against Policies">Grievances against Policies</option>
+            <option class="text-sky-600" value="Grievances due to Maladministration">Grievances due to Maladministration</option>
+            <option class="text-sky-600" value="Grievances due to Corruption">Grievances due to Corruption</option>
+            <option class="text-sky-600" value="Grievances due to Income Tax">Grievances due to Income Tax</option>
+            <option class="text-sky-600" value="Grievances due to Healthcare">Grievances due to Healthcare</option>
+            <option class="text-sky-600" value="Grievances due to Labour & Employement">Grievances due to Labour & Employement</option>
+            <option class="text-sky-600" value="Grievances in Rural Areas">Grievances in Rural Areas</option>
+        </select>
+        <label class="text-gray-700 text-lg" for="about">Write in short what the grievance is about</label>
+        <textarea class="text-lg px-3 py-2 mb-6 border border-gray-500 rounded-xl" required name="about" id="" cols="30" rows="3"></textarea>
+        <label class="text-gray-700 text-lg" for="details">Write your grievance in details</label>
+        <textarea class="text-lg px-3 py-2 mb-6 border border-gray-500 rounded-xl" required name="details" id="" cols="30" rows="10"></textarea>
+        <input type="submit" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded mx-auto">
+    </form>
+{% endblock %}

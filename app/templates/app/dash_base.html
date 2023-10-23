@@ -1,0 +1,22 @@
+{% extends 'app/layout.html' %}
+
+{% load static %}
+
+{% block title %}Grievance Dashboard{% endblock %}
+
+{% block body %}
+    <div class="w-3/5 mx-auto mt-24 flex justify-between">
+        <div class="mr-8 flex flex-col border border-sky-300 rounded-xl px-6 py-3 bg-gray-100">
+            <a class="py-3 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'register_grievance' %}"><img class="w-8 mx-3" src="{% static 'images/window-grid.svg' %}" alt="">Dashboard</a>
+            <a class="py-3 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'lodge_grievance' %}"><img class="w-8 mx-3" src="{% static 'images/file-plus.svg' %}" alt="">Lodge Grievance</a>
+            <a class="py-3 text-lg font-bold flex hover:text-sky-700" href="{% url 'escalate' %}"><img class="w-8 mx-3" src="{% static 'images/angle-double-up.svg' %}" alt="">Escalate a Grievance</a>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+{% endblock %}
+{% block footer %}
+    <footer class="mt-auto px-32 py-6 flex justify-between border-b border-gray-200 absolute right-0 left-0 bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
+        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
+    </footer>
+{% endblock %}
