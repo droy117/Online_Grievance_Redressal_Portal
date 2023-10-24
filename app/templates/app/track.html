@@ -1,0 +1,46 @@
+{% extends 'app/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+    <form class="mt-24 w-3/5 p-6 mx-auto flex flex-col border border-sky-300 rounded-xl" action="{% url 'track_grievance' %}" method="post">
+        {% csrf_token %}
+        <label class="text-gray-600" for="ref_no">Enter the Reference Number</label>
+        <input class="text-lg px-3 py-2 mb-6 border border-gray-500 rounded-xl" type="number" required name="ref_no">
+        <input type="submit" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded mx-auto">
+    </form>
+    <div class="w-3/5 mx-auto p-4 overflow-y-auto overflow-x-auto">
+        <table class="min-w-full table-auto border border-collapse">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Grievance ID</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">User</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Category</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Priority</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">About</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Status</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Created At</th>
+                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Reference No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4 border">{{ grievance.id }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.user.username }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.category }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.priority }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.about }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.status }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.created_at }}</td>
+                    <td class="py-2 px-4 border">{{ grievance.ref_no }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="mt-auto px-32 py-6 flex justify-between border-b border-gray-200 absolute right-0 left-0 bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
+        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
+    </footer>
+{% endblock %}

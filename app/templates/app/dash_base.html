@@ -9,7 +9,8 @@
         <div class="mr-8 flex flex-col border border-sky-300 rounded-xl px-6 py-3 bg-gray-100">
             <a class="py-3 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'register_grievance' %}"><img class="w-8 mx-3" src="{% static 'images/window-grid.svg' %}" alt="">Dashboard</a>
             <a class="py-3 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'lodge_grievance' %}"><img class="w-8 mx-3" src="{% static 'images/file-plus.svg' %}" alt="">Lodge Grievance</a>
-            <a class="py-3 text-lg font-bold flex hover:text-sky-700" href="{% url 'escalate' %}"><img class="w-8 mx-3" src="{% static 'images/angle-double-up.svg' %}" alt="">Escalate a Grievance</a>
+            <a class="py-3 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700" href="{% url 'escalate' %}"><img class="w-8 mx-3" src="{% static 'images/angle-double-up.svg' %}" alt="">Escalate a Grievance</a>
+            <a class="py-3 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700" href="{% url 'track_grievance' %}"><img class="w-8 mx-3" src="{% static 'images/check-circle.svg' %}" alt="">Track a Grievance</a>
         </div>
         {% block content %}
         {% endblock %}

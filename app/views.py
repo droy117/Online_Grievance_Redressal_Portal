@@ -66,7 +66,7 @@ def register(request):
     else:
         return render(request, "app/register.html")
 
-def register_grievance(request):
+def register_grievance(request): #dashboard
     registered = Grievance.objects.filter(status="REGISTERED", user=request.user)
     underReview = Grievance.objects.filter(status="UNDER REVIEW", user=request.user)
     closed = Grievance.objects.filter(status="CLOSED", user=request.user)
@@ -86,7 +86,18 @@ def register_grievance(request):
     })
 
 def track_grievance(request):
-    return render(request, 'app/track.html')
+    if request.method == "POST":
+        try:
+            grievance_obj = Grievance.objects.get(ref_no=request.POST["ref_no"], user=request.user)
+            return render(request, "app/track.html", {
+                "grievance": grievance_obj,
+            })
+        except Grievance.DoesNotExist:
+            return render(request, "app/error.html", {
+                "message": "Uh.. Oh! It seems the Reference Number is wrong. Please try again."
+            })
+    else:
+        return render(request, 'app/track.html')
 
 def lodge_grievance(request):
     if request.method == 'POST':
