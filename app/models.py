@@ -6,15 +6,15 @@ from django.db import models
 # in the table view the other details like priority,status, ref_no, created_at will be shown.
 
 PRIORITY_CHOICES = (
-    ("NORMAL", "Normal"),
-    ("MEDIUM", "Medium"),
-    ("HIGH", "High"),
+    ("Normal", "Normal"),
+    ("Medium", "Medium"),
+    ("High", "High"),
 )
 
 STATUS_CHOICES = (
-    ("REGISTERED", "Registered"),
-    ("UNDER REVIEW", "Under Review"),
-    ("CLOSED", "Closed")
+    ("Registered", "Registered"),
+    ("Under Review", "Under Review"),
+    ("Closed", "Closed")
 )
 
 class User(AbstractUser):
@@ -36,6 +36,7 @@ class Grievance(models.Model):
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default="Registered")
     created_at = models.DateTimeField(auto_now_add=True)
     ref_no = models.IntegerField(default=100)
+    handler_response = models.CharField(max_length=500, default="")
 
     def __str__(self):
         return f"Grievance: {self.id} Time: {self.created_at}"  

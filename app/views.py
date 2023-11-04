@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.core.paginator import Paginator
 
@@ -67,13 +67,14 @@ def register(request):
         return render(request, "app/register.html")
 
 def register_grievance(request): #dashboard
-    registered = Grievance.objects.filter(status="REGISTERED", user=request.user)
-    underReview = Grievance.objects.filter(status="UNDER REVIEW", user=request.user)
-    closed = Grievance.objects.filter(status="CLOSED", user=request.user)
+    registered = Grievance.objects.filter(status="Registered", user=request.user)
+    underReview = Grievance.objects.filter(status="Under Review", user=request.user)
+    closed = Grievance.objects.filter(status="Closed", user=request.user)
     nreg = len(registered)
     nureview = len(underReview)
     nclose = len(closed)
     grievances = Grievance.objects.filter(user=request.user)
+    all_grievances = Grievance.objects.all().order_by("-priority");
 
     return render(request, 'app/registerGrievance.html', {
         "registerd": registered,
@@ -83,6 +84,7 @@ def register_grievance(request): #dashboard
         "count_review": nureview,
         "count_closed": nclose,
         "grievances": grievances,
+        "all_grievances": all_grievances,
     })
 
 def track_grievance(request):
@@ -144,3 +146,19 @@ def escalate(request):
         })
     else:
         return render(request, 'app/escalate.html')
+
+def grievance_detail(request, ref_no):
+    grievance_obj = Grievance.objects.get(ref_no=ref_no)
+    return render(request, 'app/grievance_detail.html', {
+        "grievance": grievance_obj,
+    })
+    
+def handler_response(request, ref_no):
+    if request.method == "POST":
+        response = request.POST["response"]
+        grievance_obj = Grievance.objects.get(ref_no=ref_no)
+        grievance_obj.handler_response = response
+        grievance_obj.status="Under Review"
+        grievance_obj.save()
+
+        return redirect(reverse("register_grievance"))

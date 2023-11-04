@@ -1,5 +1,6 @@
 {% extends 'app/layout.html' %}
 
+
 {% load static %}
 
 {% block body %}
@@ -9,34 +10,7 @@
         <input class="text-lg px-3 py-2 mb-6 border border-gray-500 rounded-xl" type="number" required name="ref_no">
         <input type="submit" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded mx-auto">
     </form>
-    <div class="w-3/5 mx-auto p-4 overflow-y-auto overflow-x-auto">
-        <table class="min-w-full table-auto border border-collapse">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Grievance ID</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">User</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Category</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Priority</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">About</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Status</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Created At</th>
-                    <th class="py-2 px-4 bg-gray-200 font-semibold border">Reference No.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="py-2 px-4 border">{{ grievance.id }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.user.username }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.category }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.priority }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.about }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.status }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.created_at }}</td>
-                    <td class="py-2 px-4 border">{{ grievance.ref_no }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    {% include 'app/table.html' %}
 {% endblock %}
 
 {% block footer %}

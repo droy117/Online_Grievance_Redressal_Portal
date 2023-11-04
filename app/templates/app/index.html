@@ -15,7 +15,13 @@
                         {% url 'register_grievance' %}
                     {% else %}
                         {% url 'login' %}
-                    {% endif %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Register Grievance</a>
+                    {% endif %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">
+                    {% if request.user.handler %}
+                        See All Grievances
+                    {% else %}
+                        Register Grievance
+                    {% endif %}
+                </a>
             <a href="{% if user.is_authenticated %}
                         {% url 'track_grievance' %}
                     {% else %}

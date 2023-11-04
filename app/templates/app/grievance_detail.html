@@ -1,0 +1,25 @@
+{% extends 'app/dash_base.html' %}
+
+{% block body %}
+<div class="mt-24 w-3/5 mx-auto text-xl grid grid-col-1 gap-4">
+    <p class="text-gray-700 text-lg"><strong>Lodged By:</strong> {{ grievance.user.username }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Category:</strong> {{ grievance.category }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Reference No.:</strong> {{ grievance.ref_no }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Priority:</strong> {{ grievance.priority }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>About:</strong> {{ grievance.about }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Details:</strong> {{ grievance.details }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Status:</strong> {{ grievance.status }}</p><hr>
+    <p class="text-gray-700 text-lg"><strong>Created At:</strong> {{ grievance.created_at }}</p><hr>
+
+    {% if request.user.handler %}
+        <div>
+            <form action="{% url 'handler_response' grievance.ref_no%}" method="post" class="w-full mx-auto flex flex-col">
+                {% csrf_token %}
+                <label class="text-gray-700 text-lg" for="about"><strong>Respond:</strong></label>
+                <textarea class="text-lg px-3 py-2 mb-6 border border-gray-500 rounded-xl" required name="response" id="" cols="30" rows="3"></textarea>
+                <input type="submit" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded mx-auto">
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

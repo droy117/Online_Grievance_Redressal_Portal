@@ -4,39 +4,13 @@
 
 {% block content %}
     <div class="grow">
-        <div class="flex justify-between">
-            <div class="font-semibold py-3 px-6 border border-sky-300 bg-red-300 rounded-xl">Total Grievances Registerd <br><p class="text-center mt-3 text-3xl">{{ count_reg }}</p></div>
-            <div class="font-semibold py-3 px-6 border border-sky-300 bg-yellow-300 rounded-xl">Number of Grievances Pending <br><p class="text-center mt-3 text-3xl">{{ count_review }}</p></div>
-            <div class="font-semibold py-3 px-6 border border-sky-300 bg-green-300 rounded-xl">Number of Grievance Closed <br><p class="text-center mt-3 text-3xl">{{ count_closed }}</p></div>
-        </div>
-        <div class="p-4 overflow-y-auto overflow-x-auto">
-            <table class="min-w-full table-auto border border-collapse">
-                <thead>
-                    <tr>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Grievance ID</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Category</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Priority</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">About</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Status</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Created At</th>
-                        <th class="py-2 px-4 bg-gray-200 font-semibold border">Reference No.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for grievance in grievances %}
-                        <tr>
-                            <td class="py-2 px-4 border">{{ grievance.id }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.category }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.priority }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.about }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.status }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.created_at }}</td>
-                            <td class="py-2 px-4 border">{{ grievance.ref_no }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        
+        {% if not request.user.handler %}
+            <div class="flex justify-between">
+                <div class="font-semibold py-3 px-6 border border-sky-300 bg-red-300 rounded-xl">Total Grievances Registerd <br><p class="text-center mt-3 text-3xl">{{ count_reg }}</p></div>
+                <div class="font-semibold py-3 px-6 border border-sky-300 bg-yellow-300 rounded-xl">Number of Grievances Pending <br><p class="text-center mt-3 text-3xl">{{ count_review }}</p></div>
+                <div class="font-semibold py-3 px-6 border border-sky-300 bg-green-300 rounded-xl">Number of Grievance Closed <br><p class="text-center mt-3 text-3xl">{{ count_closed }}</p></div>
+            </div>
+        {% endif %}
+        {% include 'app/table.html' %}
     </div>
 {% endblock %}
