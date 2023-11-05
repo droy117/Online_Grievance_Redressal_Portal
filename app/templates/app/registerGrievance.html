@@ -6,7 +6,7 @@
     <div class="grow">
         {% if not request.user.handler %}
             <div class="flex justify-between">
-                <div class="font-semibold py-3 px-6 border border-sky-300 bg-red-300 rounded-xl">Total Grievances Registerd <br><p class="text-center mt-3 text-3xl">{{ count_reg }}</p></div>
+                <div class="font-semibold py-3 px-6 border border-sky-300 bg-red-300 rounded-xl">Total Grievances Registered <br><p class="text-center mt-3 text-3xl">{{ count_reg }}</p></div>
                 <div class="font-semibold py-3 px-6 border border-sky-300 bg-yellow-300 rounded-xl">Number of Grievances Pending <br><p class="text-center mt-3 text-3xl">{{ count_review }}</p></div>
                 <div class="font-semibold py-3 px-6 border border-sky-300 bg-green-300 rounded-xl">Number of Grievance Closed <br><p class="text-center mt-3 text-3xl">{{ count_closed }}</p></div>
             </div>
