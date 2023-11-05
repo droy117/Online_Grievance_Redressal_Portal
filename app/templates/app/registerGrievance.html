@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="grow">
+    <div class="p-6 mx-auto flex flex-col border border-sky-300 rounded-xl">
         {% if not request.user.handler %}
             <div class="flex justify-between">
                 <div class="font-semibold py-3 px-6 border border-sky-300 bg-red-300 rounded-xl">Total Grievances Registered <br><p class="text-center mt-3 text-3xl">{{ count_reg }}</p></div>
