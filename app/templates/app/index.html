@@ -7,7 +7,7 @@
 {% block body %}
     <div class="border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-28 px-5 py-4 rounded-xl shadow-lg">
         <div class="flex justify-between">
-            <p class="mt-8 text-4xl text-sky-700 leading-relaxed">This platform aims to register your grievance and assist you in its redressal.</p>
+            <p class="mt-8 text-5xl text-sky-700 leading-relaxed">This platform aims to register your grievance and assist you in its redressal.</p>
             <img src="{% static 'images/Active Support-rafiki.svg' %}" class="w-96">
         </div>
         <div class="w-max flex space-x-6">
@@ -22,11 +22,7 @@
                         Register Grievance
                     {% endif %}
                 </a>
-            <a href="{% if user.is_authenticated %}
-                        {% url 'track_grievance' %}
-                    {% else %}
-                        {% url 'login' %}
-                    {% endif %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Track a Grievance</a>
+            <a href="{% url 'track_grievance' %}" class="p-3 border border-gray-200 bg-sky-400 hover:bg-sky-600 rounded">Track a Grievance</a>
         </div>
     </div>
     <div class="flex border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-12 px-5 py-4 rounded-xl shadow-lg">
@@ -40,5 +36,28 @@
             <p class="text-xl">Our mission is to provide a seamless and user-friendly interface that allows individuals to voice their grievances and concerns with confidence. We are committed to upholding the principles of fairness, transparency, and swift resolution. By harnessing the power of technology, we aim to make the grievance redressal process more accessible, efficient, and effective.</p>
         </div>
         <img src="{% static 'images/Questions-pana.svg' %}" class="w-96">
+    </div>
+    <div class="flex border border-gray-200 bg-sky-100 w-3/5 mx-auto mt-12 px-5 py-4 rounded-xl shadow-lg">
+        <div>
+            <p class="text-4xl text-sky-700">FAQs</p>
+
+            <p class="mt-8 mb-4 text-3xl text-sky-700">1. What is the purpose of this Grievance Redressal Portal?</p>
+            <p class="mt-4 text-xl">Our Grievance Redressal Portal is designed to provide a platform for users to submit their concerns and grievances, with the goal of addressing and resolving these issues efficiently and transparently.</p>
+
+            <p class="mt-8 mb-4 text-3xl text-sky-700">2. How do I submit a grievance on this portal?</p>
+            <p class="mt-4 text-xl">To submit a grievance, log in to your account (or register one if you don't have an account yet). Then, navigate to the "Register Grievance" section and complete the provided form with all the necessary details and supporting documents.</p>
+
+            <p class="mt-8 mb-4 text-3xl text-sky-700">3. Can I track the status of my submitted grievance?</p>
+            <p class="mt-4 text-xl">Yes, you can track the status of your grievances in real-time. The portal provides a dedicated feature for tracking.</p>
+
+            <p class="mt-8 mb-4 text-3xl text-sky-700">4. How are grievances processed and resolved?</p>
+            <p class="mt-4 text-xl">Grievances are processed through a defined workflow. They are assigned to the relevant department or staff members. There are predefined priority levels, and unresolved grievances may be escalated for timely resolution.</p>
+
+            <p class="mt-8 mb-4 text-3xl text-sky-700">5. How secure is my personal data and information on this portal?</p>
+            <p class="mt-4 text-xl">Data security and privacy are of the utmost importance. We have implemented robust security measures to protect your information, and we are committed to complying with data protection regulations to ensure your data's confidentiality and integrity.</p>
+                
+                
+        </div>
+        <img src="{% static 'images/FAQs-rafiki.svg' %}" class="w-96">
     </div>
 {% endblock %}

@@ -37,6 +37,7 @@ class Grievance(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     ref_no = models.IntegerField(default=100)
     handler_response = models.CharField(max_length=500, default="")
+    satisfied = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Grievance: {self.id} Time: {self.created_at}"  

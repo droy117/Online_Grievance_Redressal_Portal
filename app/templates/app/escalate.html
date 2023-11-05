@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}Escalate Dashboard{% endblock %}
+
 {% block content %}
     <form class="p-6 w-full mx-auto flex flex-col border border-sky-300 rounded-xl" action="{% url 'escalate' %}" method="post">
         {% csrf_token %}

@@ -1,5 +1,7 @@
 {% extends 'app/dash_base.html' %}
 
+{% block title %}Lodge Grievance{% endblock %}
+
 {% block content %}
     <form class="p-6 w-full mx-auto flex flex-col border border-sky-300 rounded-xl" action="{% url 'lodge_grievance' %}" method="post">
         {% csrf_token %}

@@ -74,7 +74,7 @@ def register_grievance(request): #dashboard
     nureview = len(underReview)
     nclose = len(closed)
     grievances = Grievance.objects.filter(user=request.user)
-    all_grievances = Grievance.objects.all().order_by("-priority");
+    all_grievances = Grievance.objects.all().order_by("priority");
 
     return render(request, 'app/registerGrievance.html', {
         "registerd": registered,
@@ -90,7 +90,7 @@ def register_grievance(request): #dashboard
 def track_grievance(request):
     if request.method == "POST":
         try:
-            grievance_obj = Grievance.objects.get(ref_no=request.POST["ref_no"], user=request.user)
+            grievance_obj = Grievance.objects.get(ref_no=request.POST["ref_no"])
             return render(request, "app/track.html", {
                 "grievance": grievance_obj,
             })
@@ -131,6 +131,8 @@ def escalate(request):
         try:
             grievance_obj = Grievance.objects.get(ref_no=ref_no)
             grievance_obj.priority = priority
+            grievance_obj.satisfied = False
+            grievance_obj.handler_response = ""
             grievance_obj.save()
         except Grievance.DoesNotExist:
             return render(request, "app/error.html", {
@@ -149,9 +151,12 @@ def escalate(request):
 
 def grievance_detail(request, ref_no):
     grievance_obj = Grievance.objects.get(ref_no=ref_no)
+    
     return render(request, 'app/grievance_detail.html', {
         "grievance": grievance_obj,
+        "response_len": len(grievance_obj.handler_response),
     })
+
     
 def handler_response(request, ref_no):
     if request.method == "POST":
@@ -161,4 +166,15 @@ def handler_response(request, ref_no):
         grievance_obj.status="Under Review"
         grievance_obj.save()
 
+        return redirect(reverse("register_grievance"))
+
+def satisfied_fn(request, ref_no):
+    if request.method == "POST":
+        grievance_obj = Grievance.objects.get(ref_no=ref_no)
+        grievance_obj.status = "Closed"
+        grievance_obj.satisfied = True
+        grievance_obj.save()
+
+        print(grievance_obj.satisfied)
+        # return HttpResponseRedirect(reverse('grievance_detail', args=(ref_no,)))
         return redirect(reverse("register_grievance"))
