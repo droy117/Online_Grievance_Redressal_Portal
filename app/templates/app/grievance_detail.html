@@ -3,7 +3,7 @@
 {% block title %}Grievance Detail{% endblock %}
 
 {% block body %}
-<div class="mt-24 w-3/5 mx-auto text-xl grid grid-col-1 gap-4">
+<div class="mt-24 w-3/5 mx-auto text-xl grid grid-col-1 gap-4 shadow-lg p-3 rounded-xl">
     <p class="text-gray-700 text-lg"><strong>Lodged By:</strong> {{ grievance.user.username }}</p><hr>
     <p class="text-gray-700 text-lg"><strong>Category:</strong> {{ grievance.category }}</p><hr>
     <p class="text-gray-700 text-lg"><strong>Reference No.:</strong> {{ grievance.ref_no }}</p><hr>
@@ -29,10 +29,12 @@
                 {% if not grievance.satisfied %}
                     <form action="{% url 'satisfied_fn' grievance.ref_no %}" method="post">
                         {% csrf_token %}
-                        <strong class="text-gray-700 text-lg">Satisfied?</strong><input type="submit" name="satisfied" value="Yes" class="mx-3 px-2 py-1 border border-gray-200 bg-green-400 hover:bg-green-600 rounded">
+                        <strong class="text-gray-700 text-lg">Satisfied?</strong>
+                        <input type="submit" name="satisfied" value="Yes" class="mx-3 px-2 py-1 border border-gray-200 bg-green-400 hover:bg-green-600 rounded">
+                        <a href="{% url 'escalate' %}" class="mx-3 px-2 py-1 border border-gray-200 bg-red-400 hover:bg-red-600 rounded">No, then please escalate this grievance</a>
                     </form>
                 {% else %}
-                    <p class="text-green-400 text-lg"><strong>You marked this response as satisfied.</strong></p>
+                    <p class="text-green-400 text-lg"><strong>You marked this response as satisfactory.</strong></p>
                 {% endif %}
             {% endif %}
         </div>

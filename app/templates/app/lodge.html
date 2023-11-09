@@ -3,7 +3,7 @@
 {% block title %}Lodge Grievance{% endblock %}
 
 {% block content %}
-    <form class="p-6 w-full mx-auto flex flex-col border border-sky-300 rounded-xl" action="{% url 'lodge_grievance' %}" method="post">
+    <form class="p-6 w-full mx-auto flex flex-col border border-sky-300 rounded-xl shadow-lg" action="{% url 'lodge_grievance' %}" method="post">
         {% csrf_token %}
         <label class="text-gray-700 text-lg" for="category">Select Grievance Category</label>
         <select class="mb-6 text-xl p-3 bg-white border border-gray-500 rounded-xl" name="category" id="category">

@@ -10,7 +10,7 @@
         <div class="mt-28 text-red-500 text-center p-1 bg-red-100">{{ message }}</div>
     {% endif %}
 
-    <div class="w-1/2 my-6 mx-auto p-6 bg-sky-100 rounded-xl mt-24">
+    <div class="w-1/2 my-6 mx-auto p-6 bg-sky-100 rounded-xl mt-24 shadow-lg">
         <h1 class="mb-6 text-3xl">Log In</h1>
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
