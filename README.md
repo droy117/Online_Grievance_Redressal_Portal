@@ -2,9 +2,9 @@
 A simple portal for grievance redressal made using Django
 
 # Table of Content
-- [Prerequisites](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/edit/main/README.md#prerequisites)
-- [Functionalities](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/edit/main/README.md#functionalities)
-- [Local Machine Setup](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/edit/main/README.md#local-machine-setup)
+- [Prerequisites](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#prerequisites)
+- [Functionalities](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#functionalities)
+- [Local Machine Setup](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#local-machine-setup)
 
 # Prerequisites
 
