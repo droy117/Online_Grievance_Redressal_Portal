@@ -14,7 +14,7 @@
             {% endif %}
             <a class="py-3 flex gap-x-1 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700" href="{% url 'track_grievance' %}"><img class="w-8" src="{% static 'images/check-circle.svg' %}" alt="">Track a Grievance</a>
         </div>
-        <div class="w-4/5 mx-auto overflow-y-auto">
+        <div class="w-4/5 mx-auto overflow-y-auto shadow-lg">
             {% block content %}
             {% endblock %}
         </div>
