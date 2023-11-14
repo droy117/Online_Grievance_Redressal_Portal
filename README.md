@@ -24,8 +24,13 @@ To run this Django app locally on your machine follow the steps below:
    ```
 3. **Create and activate a virtual environment**
    ```sh
+   # For Linux
    python3 -m venv venv
    source venv/bin/activate
+
+   # For Windows
+   python -m venv venv
+   source venv/Scripts/activate
    ```
 4. **Run the application**
    ```sh
