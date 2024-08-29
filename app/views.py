@@ -13,12 +13,10 @@ def index(request):
 def login_view(request):
     if request.method == "POST":
 
-        # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
 
-        # Check if authentication successful
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
@@ -44,7 +42,6 @@ def register(request):
         state = request.POST["state"]
         gender = request.POST["gender"]
 
-        # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
 
@@ -53,7 +50,6 @@ def register(request):
                 "message": "Passwords must match."
             })
 
-        # Attempt to create new user
         try:
             user = User.objects.create_user(username=username, password=password, email=email, phone_number=phone_number, address=address, state=state, gender=gender)
             user.save()
@@ -66,7 +62,7 @@ def register(request):
     else:
         return render(request, "app/register.html")
 
-def register_grievance(request): #dashboard
+def register_grievance(request):
     registered = Grievance.objects.filter(status="Registered", user=request.user)
     underReview = Grievance.objects.filter(status="Under Review", user=request.user)
     closed = Grievance.objects.filter(status="Closed", user=request.user)
@@ -176,5 +172,4 @@ def satisfied_fn(request, ref_no):
         grievance_obj.save()
 
         print(grievance_obj.satisfied)
-        # return HttpResponseRedirect(reverse('grievance_detail', args=(ref_no,)))
         return redirect(reverse("register_grievance"))

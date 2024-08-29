@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$7%@0u+3b2g+4i3)r-y7&(oi8q&0__k3(dj8jt=s(wcmlemk7%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Debak.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,10 +76,16 @@ WSGI_APPLICATION = 'Online_Grievance_Redressal_Portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'gkieFQbyfSfneezIgVsskIFJJaJvkQdy',
+        'HOST': 'meticulous-empathy.railway.internal', 
+        'PORT': '5432',
     }
 }
+
 
 AUTH_USER_MODEL = "app.User"
 
@@ -124,3 +130,13 @@ STATIC_ROOT = 'staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_COOKIE_AGE = 1800  
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  
+SESSION_SAVE_EVERY_REQUEST = True  
+
+
+SESSION_COOKIE_SECURE = False  
+SESSION_COOKIE_HTTPONLY = True  
+SESSION_COOKIE_SAMESITE = 'Lax' 
+
