@@ -1,20 +1,20 @@
 databases:
-  - name: OnlineGrievanceRedressalPortaldb
+  - name: ogrpdb
     plan: free
-    databaseName: OnlineGrievanceRedressalPortal
-    user: OnlineGrievanceRedressalPortal
+    databaseName: ogrp
+    user: ogrp
 
 services:
   - type: web
     plan: free
-    name: OnlineGrievanceRedressalPortal
+    name: ogrp
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn OnlineGrievanceRedressalPortal.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "python -m gunicorn ogrp.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: OnlineGrievanceRedressalPortaldb
+          name: ogrpdb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
