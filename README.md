@@ -1,14 +1,6 @@
 # Online_Grievance_Redressal_Portal
 A simple portal for grievance redressal made using Django
 
-# Table of Content
-- [Prerequisites](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#prerequisites)
-- [Functionalities](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#functionalities)
-- [Local Machine Setup](https://github.com/slayeh17/Online_Grievance_Redressal_Portal/README.md#local-machine-setup)
-
-# Prerequisites
-
-# Functionalities
 
 # Local Machine Setup
 To run this Django app locally on your machine follow the steps below:
