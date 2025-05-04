@@ -1,27 +1,63 @@
-{% extends 'app/layout.html' %}
-
-{% load static %}
-
-{% block title %}Grievance Dashboard{% endblock %}
-
-{% block body %}
-    <div class="mt-24 flex mx-auto max-w-7xl">
-        <div class="p-6 mr-8 flex flex-col border border-sky-300 rounded-xl px-6 py-3 bg-gray-100 shadow-lg">
-            <a class="py-3 flex gap-x-1 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'register_grievance' %}"><img class="w-8" src="{% static 'images/window-grid.svg' %}" alt="">Dashboard</a>
-            {% if not request.user.handler %}
-                <a class="py-3 flex gap-x-1 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700" href="{% url 'lodge_grievance' %}"><img class="w-8" src="{% static 'images/file-plus.svg' %}" alt="">Lodge Grievance</a>
-                <a class="py-3 flex gap-x-1 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700" href="{% url 'escalate' %}"><img class="w-8" src="{% static 'images/angle-double-up.svg' %}" alt="">Escalate a Grievance</a>
-            {% endif %}
-            <a class="py-3 flex gap-x-1 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700" href="{% url 'track_grievance' %}"><img class="w-8" src="{% static 'images/check-circle.svg' %}" alt="">Track a Grievance</a>
-        </div>
-        <div class="w-4/5 mx-auto overflow-y-auto shadow-lg">
-            {% block content %}
-            {% endblock %}
-        </div>
+{% extends 'app/layout.html' %} {% load static %} {% block title %}Grievance
+Dashboard{% endblock %} {% block body %}
+<div class="mt-24 flex mx-auto max-w-7xl">
+    <div
+        class="p-6 mr-8 flex flex-col border border-sky-300 rounded-xl px-6 py-3 bg-gray-100 shadow-lg"
+    >
+        <a
+            class="py-3 flex gap-x-1 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700"
+            href="{% url 'register_grievance' %}"
+            ><img
+                class="w-8"
+                src="{% static 'images/window-grid.svg' %}"
+                alt=""
+            />Dashboard</a
+        >
+        {% if not request.user.handler %}
+        <a
+            class="py-3 flex gap-x-1 text-lg font-bold border-b flex border-gray-500 hover:text-sky-700"
+            href="{% url 'lodge_grievance' %}"
+            ><img
+                class="w-8"
+                src="{% static 'images/file-plus.svg' %}"
+                alt=""
+            />Lodge Grievance</a
+        >
+        <a
+            class="py-3 flex gap-x-1 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700"
+            href="{% url 'escalate' %}"
+            ><img
+                class="w-8"
+                src="{% static 'images/angle-double-up.svg' %}"
+                alt=""
+            />Escalate a Grievance</a
+        >
+        {% endif %}
+        <a
+            class="py-3 flex gap-x-1 text-lg font-bold border-b border-gray-500 flex hover:text-sky-700"
+            href="{% url 'track_grievance' %}"
+            ><img
+                class="w-8"
+                src="{% static 'images/check-circle.svg' %}"
+                alt=""
+            />Track a Grievance</a
+        >
     </div>
-{% endblock %}
-{% block footer %}
-    <footer class="mt-6 px-32 py-6 flex justify-between border-b border-gray-200 bg-gradient-to-r from-cyan-200 to-blue-300">
-        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
-    </footer>
+    <div class="w-4/5 mx-auto overflow-y-auto shadow-lg">
+        {% block content %} {% endblock %}
+    </div>
+</div>
+{% endblock %} {% block footer %}
+<footer
+    class="mt-6 px-32 py-6 flex justify-between border-b border-gray-200 bg-gradient-to-r from-cyan-200 to-blue-300"
+>
+    <a
+        href="https://github.com/droy117"
+        class="text-xl text-gray-700 hover:underline flex"
+        ><img
+            src="{% static 'images/github-mark-white.svg' %}"
+            class="w-8 mx-3"
+        />Made by Debak Roy</a
+    >
+</footer>
 {% endblock %}

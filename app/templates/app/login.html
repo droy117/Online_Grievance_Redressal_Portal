@@ -1,32 +1,53 @@
-{% extends "app/layout.html" %}
+{% extends "app/layout.html" %} {% load static %} {% block title %}Login{%
+endblock %} {% block body %} {% if message %}
+<div class="mt-28 text-red-500 text-center p-1 bg-red-100">{{ message }}</div>
+{% endif %}
 
-{% load static %}
+<div class="w-1/2 my-6 mx-auto p-6 bg-sky-100 rounded-xl mt-24 shadow-lg">
+    <h1 class="mb-6 text-3xl">Log In</h1>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label class="text-gray-600" for="username">Username</label><br />
+        <input
+            class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-full"
+            autofocus
+            type="text"
+            name="username"
+            placeholder="Username"
+        /><br />
+        <label class="text-gray-600" for="password">Password</label><br />
+        <input
+            class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-full"
+            type="password"
+            name="password"
+            placeholder="Password"
+        /><br />
+        <input
+            class="py-2 px-8 text-lg bg-sky-500 hover:bg-sky-700 rounded-xl text-white"
+            type="submit"
+            value="Login"
+        /><br />
+    </form>
+</div>
 
-{% block title %}Login{% endblock %}
+<div class="text-center">
+    Don't have an account?
+    <a href="{% url 'register' %}" class="text-sky-700 hover:underline"
+        >Register here.</a
+    >
+</div>
 
-{% block body %}
-
-    {% if message %}
-        <div class="mt-28 text-red-500 text-center p-1 bg-red-100">{{ message }}</div>
-    {% endif %}
-
-    <div class="w-1/2 my-6 mx-auto p-6 bg-sky-100 rounded-xl mt-24 shadow-lg">
-        <h1 class="mb-6 text-3xl">Log In</h1>
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <label class="text-gray-600" for="username">Username</label><br>
-            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-full" autofocus type="text" name="username" placeholder="Username"><br>
-            <label class="text-gray-600" for="password">Password</label><br>
-            <input class="p-1 border-2 border-sky-300 text-xl mb-4 rounded w-full" type="password" name="password" placeholder="Password"><br>
-            <input class="py-2 px-8 text-lg bg-sky-500 hover:bg-sky-700 rounded-xl text-white" type="submit" value="Login"><br>
-        </form>
-    </div>
-
-    <div class="text-center">Don't have an account? <a href="{% url 'register' %}" class="text-sky-700 hover:underline">Register here.</a></div>
-
-{% endblock %}
-{% block footer %}
-    <footer class="mt-auto px-32 py-6 flex justify-between border-b border-gray-200 absolute right-0 left-0 bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300">
-        <a href="https://github.com/slayeh17" class="text-xl text-gray-700 hover:underline flex"><img src="{% static 'images/github-mark-white.svg' %}" class="w-8 mx-3">Made by Debak Roy</a>
-    </footer>
+{% endblock %} {% block footer %}
+<footer
+    class="mt-auto px-32 py-6 flex justify-between border-b border-gray-200 absolute right-0 left-0 bottom-0 bg-gradient-to-r from-cyan-200 to-blue-300"
+>
+    <a
+        href="https://github.com/droy117"
+        class="text-xl text-gray-700 hover:underline flex"
+        ><img
+            src="{% static 'images/github-mark-white.svg' %}"
+            class="w-8 mx-3"
+        />Made by Debak Roy</a
+    >
+</footer>
 {% endblock %}

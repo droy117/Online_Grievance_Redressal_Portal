@@ -7,7 +7,7 @@ To run this Django app locally on your machine follow the steps below:
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/slayeh17/Online_Grievance_Redressal_Portal.git
+   git clone https://github.com/droy117/Online_Grievance_Redressal_Portal.git
    ```
 
 2. **Navigate to the Repository**:
